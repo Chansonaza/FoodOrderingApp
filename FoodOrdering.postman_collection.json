@@ -1,0 +1,211 @@
+{
+  "info": {
+    "name": "Food Ordering Microservices",
+    "description": "Collection to test Restaurant, Order, Payment, and Notification microservices for the Food Ordering App assignment.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Restaurant Service",
+      "item": [
+        {
+          "name": "viewallrestaurant",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/viewallrestaurant",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["viewallrestaurant"]
+            }
+          }
+        },
+        {
+          "name": "searchrestaurant",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/searchrestaurant?name=pizza",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["searchrestaurant"],
+              "query": [
+                { "key": "name", "value": "pizza" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Order Service",
+      "item": [
+        {
+          "name": "addorder (Success case)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"NZ\",\n  \"item\": \"Margherita Pizza\",\n  \"amount\": 20\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3002/addorder",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3002",
+              "path": ["addorder"]
+            }
+          }
+        },
+        {
+          "name": "addorder (Failure case)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"NZ\",\n  \"item\": \"Sushi Set\",\n  \"amount\": 0\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3002/addorder",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3002",
+              "path": ["addorder"]
+            }
+          }
+        },
+        {
+          "name": "vieworder (all)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3002/vieworder",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3002",
+              "path": ["vieworder"]
+            }
+          }
+        },
+        {
+          "name": "vieworder (single)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3002/vieworder?orderId=1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3002",
+              "path": ["vieworder"],
+              "query": [
+                { "key": "orderId", "value": "1" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "cancelorder",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3002/cancelorder",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3002",
+              "path": ["cancelorder"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payment Service",
+      "item": [
+        {
+          "name": "paymentprocess (Success)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1,\n  \"amount\": 20\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3003/paymentprocess",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3003",
+              "path": ["paymentprocess"]
+            }
+          }
+        },
+        {
+          "name": "paymentprocess (Failure)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 2,\n  \"amount\": 0\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3003/paymentprocess",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3003",
+              "path": ["paymentprocess"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notification Service",
+      "item": [
+        {
+          "name": "sendnotification",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1,\n  \"status\": \"Success\",\n  \"message\": \"Test notification\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3004/sendnotification",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3004",
+              "path": ["sendnotification"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
