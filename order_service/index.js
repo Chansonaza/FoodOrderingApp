@@ -5,8 +5,8 @@ const app = express();
 app.use(express.json());
 
 const PORT = 3002;
-const PAYMENT_SERVICE_URL = 'http://localhost:3003/paymentprocess';
-const NOTIFICATION_SERVICE_URL = 'http://localhost:3004/sendnotification';
+const PAYMENT_SERVICE_URL = 'http://3.94.127.200:3003/paymentprocess';
+const NOTIFICATION_SERVICE_URL = 'http://3.94.127.200:3004/sendnotification';
 
 // In-memory order store
 let orders = [];
