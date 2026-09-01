@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 const PORT = 3002;
-const PAYMENT_SERVICE_URL = 'http://3.94.127.200:3003/paymentprocess';
+const PAYMENT_SERVICE_URL = 'http://3.88.201.241:3003/paymentprocess';
 const NOTIFICATION_SERVICE_URL = 'http://3.94.127.200:3004/sendnotification';
 
 // In-memory order store
